@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define DECREMENT -1
-#define INCREMENT 1
+#define UPP 0
+#define DOWN 1
 
 /**
  * struct listint_s - Doubly linked list node
