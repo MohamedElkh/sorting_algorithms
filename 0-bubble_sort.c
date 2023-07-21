@@ -1,6 +1,23 @@
 #include "sort.h"
 
 /**
+ * func_swap - function to swap two ints in array
+ * @fir: the first int
+ * @sec: the second int
+ *
+ * Return: nothing.
+ */
+
+void func_swap(int *fir, int *sec)
+{
+	int tp;
+
+	tp = *fir;
+	*fir = *sec;
+	*sec = tp;
+}
+
+/**
  * bubble_sort - function to sort array of elemensts
  * @array: the array to be checked
  * @size: the size of the array
@@ -10,26 +27,30 @@
 
 void bubble_sort(int *array, size_t size)
 {
-	size_t tp = 0;
-	size_t x, idx;
+	bool check = false;
+	size_t x;
+	size_t le = size;
 
-	if (size < 2)
+	if (array == NULL || size < 2)
 	{
 		return;
 	}
 
-	for (x = 0; x < size; x++)
+	while (check == false)
 	{
-		for (idx = 0; idx < size; idx++)
-		{
-			if (array[idx] > array[idx + 1] && array[idx + 1])
-			{
-				tp = array[idx];
-				array[idx] = array[idx + 1];
+		check = true;
 
-				array[idx + 1] = tp;
+		for (x = 0; x < le - 1; x++)
+		{
+			if (array[x] > array[x + 1])
+			{
+				func_swap(array + x, array + x + 1);
 				print_array(array, size);
+
+				check = false;
 			}
 		}
+
+		le--;
 	}
 }
